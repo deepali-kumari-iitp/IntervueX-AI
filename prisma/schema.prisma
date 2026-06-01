@@ -1,0 +1,35 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id             String   @id @default(cuid())
+  clerkId        String   @unique
+  name           String?
+  email          String?  @unique
+  imageUrl       String?
+
+  readinessScore Int      @default(0)
+  globalRank     Int      @default(0)
+
+  createdAt      DateTime @default(now())
+  resumes        Resume[]
+  updatedAt      DateTime @updatedAt
+}
+
+model Resume {
+  id        String   @id @default(cuid())
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  fileUrl   String
+  fileName  String
+
+  createdAt DateTime @default(now())
+}

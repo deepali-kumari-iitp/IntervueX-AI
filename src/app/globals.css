@@ -1,26 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --wine: #65164D;
+  --magenta: #A0004D;
+  --hot-pink: #D1004F;
+  --crimson: #F0004F;
+  --orange: #FF5A36;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+* {
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html,
+body {
+  min-height: 100vh;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(101, 22, 77, 0.35),
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(255, 90, 54, 0.15),
+      transparent 25%
+    ),
+    linear-gradient(
+      135deg,
+      #050505 0%,
+      #0b0b0b 35%,
+      #111111 100%
+    );
+
+  color: white;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.glass {
+  background: rgba(20, 20, 20, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.45),
+    0 0 20px rgba(101, 22, 77, 0.12);
+
+  transition: all 0.3s ease;
+}
+
+.glass:hover {
+  border-color: rgba(255, 90, 54, 0.25);
+
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.55),
+    0 0 30px rgba(255, 90, 54, 0.15);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #A0004D,
+    #D1004F,
+    #FF5A36
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.primary-btn {
+  background: linear-gradient(
+    90deg,
+    #A0004D,
+    #D1004F,
+    #FF5A36
+  );
+
+  color: white;
+  border: none;
+}
+
+.primary-btn:hover {
+  opacity: 0.92;
+}
+
+.glow {
+  box-shadow:
+    0 0 20px rgba(209, 0, 79, 0.35),
+    0 0 40px rgba(255, 90, 54, 0.2);
 }
